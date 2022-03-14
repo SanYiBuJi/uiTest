@@ -65,6 +65,32 @@ class FormTestDome:
         element.send_keys("测试输入")
         sleep(3)
 
+    def textarea_input(self):
+        element = self.drvice.find_element_by_name("ta1")
+        element.clear()
+        element.send_keys("策就是看接口连接上的可乐放家里卡萨丁解放路口设计的反馈了时间到付款时间到了会计法律上的解放撒旦教弗兰克萨吉林科技反倒是拉科技大飞机上的发送地方就是劳动纠纷涉及的法律斯卡迪复健科拉萨的减肥")
+        sleep(3)
+        element2 = self.drvice.find_element_by_xpath("//textarea[2]")
+        element2.clear()
+        element2.send_keys("策就是看接口连接上的可乐放家里卡萨丁解放路口设计的反馈了时间到付款时间到了会计法律上的解放撒旦教弗兰克萨吉林科技反倒是拉科技大飞机上的发送地方就是劳动纠纷涉及的法律斯卡迪复健科拉萨的减肥")
+        sleep(3)
+
+    def checkbox_dome(self):
+        element1 = self.drvice.find_element_by_css_selector("input[value='cv1']")
+        element1.click()
+        sleep(3)
+        element2 = self.drvice.find_element_by_css_selector("input[value='cv2']")
+        element2.click()
+        sleep(3)
+        element3 = self.drvice.find_element_by_css_selector("input[value='cv3']")
+        element3.click()
+        sleep(3)
+        # 这里居然埋坑
+        element4 = self.drvice.find_element_by_xpath("//input[@type='checkbox']/../input[4]")
+        element4.click()
+        sleep(3)
+
+
 if __name__ == '__main__':
     formTest = FormTestDome()
     # 执行测试方法
@@ -75,4 +101,6 @@ if __name__ == '__main__':
     # formTest.input_css_attribute2()
     # formTest.input_css_type()
     # formTest.input_css_type2()
+    # formTest.textarea_input()
+    # formTest.checkbox_dome()
     formTest.quit()
