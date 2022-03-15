@@ -4,6 +4,11 @@
 from selenium import webdriver
 from time import sleep
 
+from selenium.webdriver.support import wait
+
+from config import Config
+
+
 class FormTestDome:
     '''
     测试http://sahitest.com/demo/formTest.htm 中的元素定位练习
@@ -12,6 +17,7 @@ class FormTestDome:
 
     TestURl = "http://sahitest.com/demo/formTest.htm"
     def __init__(self):
+        # self.drvice = webdriver.Chrome(Config.driver_path)
         self.drvice = webdriver.Chrome("D:\\Tools\\WebDriver\\chromedriver.exe")
         self.drvice.get(FormTestDome.TestURl)
         # 处理弹窗
@@ -90,6 +96,59 @@ class FormTestDome:
         element4.click()
         sleep(3)
 
+    def radio_dome(self):
+        element1 = self.drvice.find_element_by_css_selector("input[value='rv1']")
+        element2 = self.drvice.find_element_by_css_selector("input[value='rv2']")
+        element1.click()
+        print(element1.is_selected())
+        print(element2.is_selected())
+        sleep(3)
+
+        element2.click()
+        print(element1.is_selected())
+        print(element2.is_selected())
+
+    def password_dome(self):
+        element1 = self.drvice.find_element_by_xpath("//input[@type='password' and @name='p1']")
+        element1.clear()
+        element1.send_keys("测试输入")
+        sleep(3)
+        element2 = self.drvice.find_element_by_xpath("//input[@type='password' and not(@name='p1')]")
+        element2.clear()
+        element2.send_keys("测试数据2")
+        sleep(3)
+
+    def select_dome1(self):
+        element = self.drvice.find_element_by_xpath("//select[@name='s1']")
+        element.click()
+        element1 = self.drvice.find_element_by_xpath("//select[@name='s1']/option[@value='o1']")
+        element2 = self.drvice.find_element_by_xpath("//select[@name='s1']/option[@value='o2']")
+        element3 = self.drvice.find_element_by_xpath("//select[@name='s1']/option[@value='o3']")
+        element1.click()
+        self.drvice.switch_to.active_element.click()
+        print(element1.is_selected())
+        print(element2.is_selected())
+        print(element3.is_selected())
+        sleep(2)
+
+        element.click()
+        element2.click()
+        self.drvice.switch_to.alert.accept()
+        print(element1.is_selected())
+        print(element2.is_selected())
+        print(element3.is_selected())
+        sleep(2)
+
+        element.click()
+        element3.click()
+        self.drvice.switch_to.alert.accept()
+        print(element1.is_selected())
+        print(element2.is_selected())
+        print(element3.is_selected())
+        sleep(2)
+
+
+
 
 if __name__ == '__main__':
     formTest = FormTestDome()
@@ -103,4 +162,7 @@ if __name__ == '__main__':
     # formTest.input_css_type2()
     # formTest.textarea_input()
     # formTest.checkbox_dome()
+    # formTest.radio_dome()
+    # formTest.password_dome()
+    formTest.select_dome1()
     formTest.quit()
