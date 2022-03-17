@@ -231,6 +231,29 @@ class FormTestDome:
         print(element2.is_selected())
         print(element3.is_selected())
 
+    def button_reset_demo1(self):
+        element = self.drvice.find_element_by_xpath("//input[@name='resetTest']")
+        element.clear()
+        element.send_keys("test")
+        element1 = self.drvice.find_element_by_xpath("//input[@id='resetId']")
+        element1.click()
+        print(element.text)
+        element.clear()
+        element.send_keys("test2")
+        element2 = self.drvice.find_element_by_xpath("//input[@name='resetName' and not(@id='resetId')]")
+        element2.click()
+        print(element.text)
+        element.clear()
+        element.send_keys("test3")
+        element3 = self.drvice.find_element_by_xpath("//input[@id='resetId1']")
+        element3.click()
+        print(element.text)
+        element.clear()
+        element.send_keys("test4")
+        element2 = self.drvice.find_element_by_xpath("//input[@type='reset'][4]")
+        element2.click()
+        print(element.text)
+
 
 if __name__ == '__main__':
     formTest = FormTestDome()
@@ -246,5 +269,6 @@ if __name__ == '__main__':
     # formTest.checkbox_dome()
     # formTest.radio_dome()
     # formTest.password_dome()
-    formTest.select_dome4()
+    # formTest.select_dome4()
+    formTest.button_reset_demo1()
     formTest.quit()
