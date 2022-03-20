@@ -254,6 +254,12 @@ class FormTestDome:
         element2.click()
         print(element.text)
 
+    def Button_dome2(self):
+        element1 = self.drvice.find_element_by_css_selector("#buttonId")
+        element1.click()
+        element2 = self.drvice.find_element_by_xpath("/html/body/form/button[2]")
+        element2.click()
+
 
 if __name__ == '__main__':
     formTest = FormTestDome()
