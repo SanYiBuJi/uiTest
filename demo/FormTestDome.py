@@ -259,7 +259,18 @@ class FormTestDome:
         element1.click()
         element2 = self.drvice.find_element_by_xpath("/html/body/form/button[2]")
         element2.click()
+        element3 = self.drvice.find_element_by_xpath("//button[@id='buttonId']")
+        element3.click()
 
+    def Submit_dome(self):
+        element1 = self.drvice.find_element_by_xpath("//input[@id='submitBtnId' and value='Add']")
+        element1.click()
+        element2 = self.drvice.find_element_by_xpath("//input[@id='submitBtnId' and @name='submitBtnName' and not("
+                                                     "@value='Add')]")
+        element2.click()
+        element3 = self.drvice.find_element_by_xpath("//input[@id='submitBtnId' and not(@value='Add') and not("
+                                                     "@name='submitBtnName']")
+        element3.click()
 
 if __name__ == '__main__':
     formTest = FormTestDome()
@@ -276,5 +287,6 @@ if __name__ == '__main__':
     # formTest.radio_dome()
     # formTest.password_dome()
     # formTest.select_dome4()
-    formTest.button_reset_demo1()
+    # formTest.button_reset_demo1()
+    formTest.Submit_dome()
     formTest.quit()
