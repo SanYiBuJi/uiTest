@@ -272,6 +272,13 @@ class FormTestDome:
                                                      "@name='submitBtnName']")
         element3.click()
 
+    def Get_ALl_Attributes(self):
+        element = self.drvice.find_element_by_xpath("//input[@type='button' and @value='Get All Attributes']")
+        element.click()
+        autt = self.drvice.find_element_by_xpath("//textarea[@id='output']")
+        value = autt.get_attribute("value")
+        print(value)
+
 if __name__ == '__main__':
     formTest = FormTestDome()
     # 执行测试方法
@@ -288,5 +295,6 @@ if __name__ == '__main__':
     # formTest.password_dome()
     # formTest.select_dome4()
     # formTest.button_reset_demo1()
-    formTest.Submit_dome()
+    # formTest.Submit_dome()
+    formTest.Get_ALl_Attributes()
     formTest.quit()
